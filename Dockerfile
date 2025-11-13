@@ -34,7 +34,7 @@ RUN cd /usr/src && \
 RUN cd /usr/src && \
     git clone https://github.com/bg111/asterisk-chan-dongle.git && \
     cd asterisk-chan-dongle && \
-    ./bootstrap && ./configure && make && make install
+    ./bootstrap && ./configure --with-astversion=18.19.0 && make && make install
 
 # Copiar arquivos de configuração
 COPY configs /etc/asterisk/
