@@ -1,7 +1,7 @@
 FROM debian:12-slim
 
 # Variáveis
-ENV ASTERISK_VERSION=18.21.1
+ENV ASTERISK_VERSION=18.26.4
 
 # Atualiza e instala dependências
 RUN apt-get update && apt-get install -y \
@@ -34,7 +34,7 @@ RUN cd /usr/src && \
 RUN cd /usr/src && \
     git clone https://github.com/bg111/asterisk-chan-dongle.git && \
     cd asterisk-chan-dongle && \
-    ./bootstrap && ./configure --with-astversion=18.21.1 && make && make install
+    ./bootstrap && ./configure --with-astversion=18.26.4 && make && make install
 
 # Copiar arquivos de configuração
 COPY configs /etc/asterisk/
