@@ -20,18 +20,29 @@ RUN apt-get update && apt-get install -y \
     psmisc \
     curl \
     pkg-config \
+    xmlstarlet \
+    python3 \
+    python3-dev \
+    libcurl4-openssl-dev \
+    libspeex-dev \
+    libsrtp2-dev \
+    libogg-dev \
+    libvorbis-dev \
+    libspandsp-dev \
+    libgsm1-dev \
+    libiksemel-dev \
+    libneon27-gnutls-dev \
+    libusb-dev \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/src && \
-    wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz && \
+    wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${ASTERISK_VERSION}.tar.gz && \
     tar zxvf asterisk-${ASTERISK_VERSION}.tar.gz && \
     cd asterisk-${ASTERISK_VERSION} && \
     ./configure --with-jansson-bundled && \
     make menuselect.makeopts && \
-    make -j$(nproc) && \
-    make install && \
-    make samples && \
-    make config
+    make -j$(nproc) && make install && \
+    make samples && make config
 
 RUN cd /usr/src && \
     git clone https://github.com/bg111/asterisk-chan-dongle.git && \
