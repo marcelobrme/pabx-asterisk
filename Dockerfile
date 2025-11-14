@@ -1,6 +1,6 @@
 FROM debian:12-slim
 
-ENV ASTERISK_VERSION=18.21.1
+ENV ASTERISK_VERSION=18.26.4
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN cd /usr/src && \
-    wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${ASTERISK_VERSION}.tar.gz && \
+    wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-${ASTERISK_VERSION}.tar.gz && \
     tar zxvf asterisk-${ASTERISK_VERSION}.tar.gz && \
     cd asterisk-${ASTERISK_VERSION} && \
     ./configure --with-jansson-bundled && \
